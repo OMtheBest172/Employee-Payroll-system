@@ -99,7 +99,8 @@ int main() {
     printf("Total Deductions : ₹%d\n", td);
     printf("-------------------------------------------------------------------------------\n");
 
-    printf("The Net pay of Employee is = ₹%d", te+td);
+    printf("The Net pay of Employee is = ₹%d", te-td);
     
     return 0;
 }
+
