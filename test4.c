@@ -66,15 +66,19 @@ int main() {
     int td = 0.13*te + 0.03*te + 0.05*te;
 
     int net = te - td;
-        printf("%-6d %-15s ₹%-15d ₹%-15d\n", id[i], name[i], basp[i], net);
+        printf("%-6d %-15s ₹%-12d ₹%-15d\n", id[i], name[i], basp[i], net);
     }
      printf("-------------------------------------------------------------------------------\n");
      printf("-------------------------------------------------------------------------------\n");
      printf("-------------------------------------------------------------------------------\n");
+
+    //since the primary table is displayed now we start with secondary payslip table for single employees
     
-    //primary table is displayer now we start with secondary payslip table for single employees
-    printf("Enter the EMP ID for which the Detailed Pay slip you want to check : ");
     int n2;
+    //the payslip goto loop starts here
+    payslip_menu:
+    printf("Enter the EMP ID for which the Detailed Pay slip you want to check : ");
+
     scanf("%d", &n2 );
     printf("-------------------------------------------------------------------------------\n");
     int da = 0.58*basp[n2];
@@ -109,5 +113,13 @@ int main() {
     printf("The Net pay of Employee is = ₹%d\n", te-td);
     printf("-------------------------------------------------------------------------------\n");
 
+    //we wil ask the user again and again if we want to ceck the payslip of another employe
+    char again;
+    printf("\nDo you want to check another payslip? (y/n): ");
+    scanf(" %c", &again);
+
+    if (again == 'y' || again == 'Y') {
+        goto payslip_menu;
+    }
     return 0;
 }
