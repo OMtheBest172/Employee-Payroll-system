@@ -13,7 +13,7 @@ int main() {
     }
     
    //////////////////////
-    char name[records][50];
+    char name[records][50];//here 50 is the number of characters the variable can store
     for(i=1; i<=records; i++ ){
        printf("enter Name of Record %d : ", i);
         scanf("%s", &name[i]);
@@ -125,4 +125,5 @@ int main() {
     }
     return 0;
 }
+
 
