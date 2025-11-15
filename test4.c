@@ -20,29 +20,29 @@ int main() {
     }
 
     /////////////////
-    int basp[records];
+    float basp[records];
     for(i=1; i<=records; i++ ){
         printf("enter Baic Pay of Record %d : ", i);
-        scanf("%d", &basp[i]);
+        scanf("%f", &basp[i]);
     }
 
        //////////
-    int alow[records];
+    float alow[records];
     for(i=1; i<=records; i++ ){
         printf("enter Allowances of Record %d : ", i);
-        scanf("%d", &alow[i]);
+        scanf("%f", &alow[i]);
     }
        //////////
-    int ded[records];
+    float ded[records];
     for(i=1; i<=records; i++ ){
         printf("enter Deductions of Record %d : ", i);
-        scanf("%d", &ded[i]);
+        scanf("%f", &ded[i]);
     }
      //////////
-    int cl[records];
+    float cl[records];
     for(i=1; i<=records; i++ ){
         printf("enter city allowances of Record %d : ", i);
-        scanf("%d", &cl[i]);
+        scanf("%f", &cl[i]);
     }
 
 
@@ -58,16 +58,17 @@ int main() {
     for(i = 1; i<=records; i++){
         //da = Dearness allowances, hra = house rent allowance, city = city allowance, extra is your extra allowances
         //professor chinmayee has already sent you all guys the formulas we are using to calculte the stuff like da, hra, taxes etc so please read that in whatsapp group
-    int da = 0.58 * basp[i];
-    int hra = 0.16 * basp[i];
-    int city = cl[i];
-    int extra = alow[i];
 
-    int te = basp[i] + da + hra + city + extra;
-    int td = 0.13*te + 0.03*te + 0.05*te;
+        float da = 0.58 * basp[i];
+    float hra = 0.16 * basp[i];
+    float city = cl[i];
+    float extra = alow[i];
 
-    int net = te - td;
-        printf("%-6d %-15s ₹%-12d ₹%-15d\n", id[i], name[i], basp[i], net);
+    float te = basp[i] + da + hra + city + extra;
+    float td = 0.13*te + 0.03*te + 0.05*te;
+
+    float net = te - td;
+        printf("%-6d %-15s ₹%-12f ₹%-15f\n", id[i], name[i], basp[i], net);
     }
      printf("-------------------------------------------------------------------------------\n");
      printf("-------------------------------------------------------------------------------\n");
@@ -82,36 +83,36 @@ int main() {
 
     scanf("%d", &n2 );
     printf("-------------------------------------------------------------------------------\n");
-    int da = 0.58*basp[n2];
-    int hra =  0.16*basp[n2];
-    int callow = cl[n2];
-    int exallow = alow[n2];
-    int te = basp[n2]+ 0.58*basp[n2]+ 0.16*basp[n2] + cl[n2] + alow[n2];
+    float da = 0.58*basp[n2];
+    float hra =  0.16*basp[n2];
+    float callow = cl[n2];
+    float exallow = alow[n2];
+    float te = basp[n2]+ 0.58*basp[n2]+ 0.16*basp[n2] + cl[n2] + alow[n2];
     printf("Earnings\t\tAmount\n");
     printf("-------------------------------------------------------------------------------\n");
-    printf("Dearness Allowance\t₹%d\n", da);
-    printf("House Rent Allowance\t₹%d\n",hra);
-    printf("City Allowance\t\t₹%d\n", callow);
-    printf("Extra Allowances\t₹%d\n", exallow);
+    printf("Dearness Allowance\t₹%f\n", da);
+    printf("House Rent Allowance\t₹%f\n",hra);
+    printf("City Allowance\t\t₹%f\n", callow);
+    printf("Extra Allowances\t₹%f\n", exallow);
     printf("-------------------------------------------------------------------------------\n");
-    printf("Total Earnings : ₹%d\n", te);
+    printf("Total Earnings : ₹%f\n", te);
 
     printf("-------------------------------------------------------------------------------\n");
-    int pt = 0.13*te;
-    int ins = 0.03*te;
-    int tds =  0.05*te;
-    int td = pt + ins + tds;
+    float pt = 0.13*te;
+    float ins = 0.03*te;
+    float tds =  0.05*te;
+    float td = pt + ins + tds;
     printf("-------------------------------------------------------------------------------\n");
     printf("Deductions\t\tAmount\n");
     printf("-------------------------------------------------------------------------------\n");
-    printf("Professional Tax\t₹%d\n", pt);
-    printf("Insurance\t\t₹%d\n", ins);
-    printf("Tax deducted at source\t₹%d\n", tds);
+    printf("Professional Tax\t₹%f\n", pt);
+    printf("Insurance\t\t₹%f\n", ins);
+    printf("Tax deducted at source\t₹%f\n", tds);
     printf("-------------------------------------------------------------------------------\n");
-    printf("Total Deductions : ₹%d\n", td);
+    printf("Total Deductions : ₹%f\n", td);
     printf("-------------------------------------------------------------------------------\n");
 
-    printf("The Net pay of Employee is = ₹%d\n", te-td);
+    printf("The Net pay of Employee is = ₹%f\n", te-td);
     printf("-------------------------------------------------------------------------------\n");
 
     //we wil ask the user again and again if we want to ceck the payslip of another employe
@@ -124,4 +125,3 @@ int main() {
     }
     return 0;
 }
-
