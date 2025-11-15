@@ -5,7 +5,7 @@ int main() {
     
     printf("how many records you want to enter in the database table?");
     scanf("%d", &records);
-    //////////Scan input///////////
+    //////////Scan input///////////Every column in this table is a seperate array
     int id[records];
     for(i=1; i<=records; i++ ){
         printf("enter EMP ID of Record %d : ", i);
@@ -48,24 +48,31 @@ int main() {
 
 //////////////////table outputs////////////
 
-    //main table - basic pay and net pay (in hand), total earning and total deuctions
-    //there should be city allowance in the secondary table
+   
 
-    //net pay is the money we get in hand
+    //net pay is the money we get in hand and total earnings is the basic pay +allowances before deductions
     ///////
     printf("-------------------------------------------------------------------------------\n");
     printf("EMP ID\tName\tBasic Pay\tNet Pay\n");
     printf("-------------------------------------------------------------------------------\n");
     for(i = 1; i<=records; i++){
-        printf("%-6d %-15s ₹%-15d ₹%-15d\n", id[i], name[i], basp[i], 
-            basp[i]+ 0.58*basp[i]+ 0.16*basp[i] + cl[i] + alow[i] + 
-                0.13*(basp[i]+ 0.58*basp[i]+ 0.16*basp[i] + cl[i] + alow[i]) +
-                   0.03*(basp[i]+ 0.58*basp[i]+ 0.16*basp[i] + cl[i] + alow[i]) + 
-                    0.05*(basp[i]+ 0.58*basp[i]+ 0.16*basp[i] + cl[i] + alow[i]));
+        //da = Dearness allowances, hra = house rent allowance, city = city allowance, extra is your extra allowances
+    int da = 0.58 * basp[i];
+    int hra = 0.16 * basp[i];
+    int city = cl[i];
+    int extra = alow[i];
+
+    int te = basp[i] + da + hra + city + extra;
+    int td = 0.13*te + 0.03*te + 0.05*te;
+
+    int net = te - td;
+        printf("%-6d %-15s ₹%-15d ₹%-15d\n", id[i], name[i], basp[i], net);
     }
      printf("-------------------------------------------------------------------------------\n");
      printf("-------------------------------------------------------------------------------\n");
      printf("-------------------------------------------------------------------------------\n");
+    
+    //primary table is displayer now we start with secondary payslip table for single employees
     printf("Enter the EMP ID for which the Detailed Pay slip you want to check : ");
     int n2;
     scanf("%d", &n2 );
@@ -99,8 +106,8 @@ int main() {
     printf("Total Deductions : ₹%d\n", td);
     printf("-------------------------------------------------------------------------------\n");
 
-    printf("The Net pay of Employee is = ₹%d", te-td);
-    
+    printf("The Net pay of Employee is = ₹%d\n", te-td);
+    printf("-------------------------------------------------------------------------------\n");
+
     return 0;
 }
-
