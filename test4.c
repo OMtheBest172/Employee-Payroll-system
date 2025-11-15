@@ -3,7 +3,7 @@
 int main() {
     int records, i;
     
-    printf("how many records you want to enter in the database table?");
+    printf("how many records you want to enter in the database table? : ");
     scanf("%d", &records);
     //////////Scan input///////////Every column in this table is a seperate array
     int id[records];
@@ -13,7 +13,7 @@ int main() {
     }
     
    //////////////////////
-    char name[records][50];//here 50 is the number of characters the variable can store
+    char name[records][50];
     for(i=1; i<=records; i++ ){
        printf("enter Name of Record %d : ", i);
         scanf("%s", &name[i]);
@@ -29,7 +29,7 @@ int main() {
        //////////
     float alow[records];
     for(i=1; i<=records; i++ ){
-        printf("enter Allowances of Record %d : ", i);
+        printf("enter Extra Allowances of Record %d : ", i);
         scanf("%f", &alow[i]);
     }
        //////////
@@ -65,7 +65,7 @@ int main() {
     float extra = alow[i];
 
     float te = basp[i] + da + hra + city + extra;
-    float td = 0.13*te + 0.03*te + 0.05*te;
+    float td = 0.13*te + 0.03*te + 0.05*te + ded[i];
 
     float net = te - td;
         printf("%-6d %-15s ₹%-12f ₹%-15f\n", id[i], name[i], basp[i], net);
@@ -101,13 +101,14 @@ int main() {
     float pt = 0.13*te;
     float ins = 0.03*te;
     float tds =  0.05*te;
-    float td = pt + ins + tds;
+    float td = pt + ins + tds+ded[n2];
     printf("-------------------------------------------------------------------------------\n");
     printf("Deductions\t\tAmount\n");
     printf("-------------------------------------------------------------------------------\n");
     printf("Professional Tax\t₹%f\n", pt);
     printf("Insurance\t\t₹%f\n", ins);
     printf("Tax deducted at source\t₹%f\n", tds);
+    printf("Extra deductions\t₹%f\n", ded[n2]);
     printf("-------------------------------------------------------------------------------\n");
     printf("Total Deductions : ₹%f\n", td);
     printf("-------------------------------------------------------------------------------\n");
@@ -125,5 +126,3 @@ int main() {
     }
     return 0;
 }
-
-
