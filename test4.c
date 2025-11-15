@@ -53,7 +53,7 @@ int main() {
     //net pay is the money we get in hand and total earnings is the basic pay +allowances before deductions
     ///////
     printf("-------------------------------------------------------------------------------\n");
-    printf("EMP ID\tName\tBasic Pay\tNet Pay\n");
+    printf("EMP ID\tName\t\tBasic Pay\tNet Pay\n");
     printf("-------------------------------------------------------------------------------\n");
     for(i = 1; i<=records; i++){
         //da = Dearness allowances, hra = house rent allowance, city = city allowance, extra is your extra allowances
@@ -125,3 +125,4 @@ int main() {
     }
     return 0;
 }
+
