@@ -57,6 +57,7 @@ int main() {
     printf("-------------------------------------------------------------------------------\n");
     for(i = 1; i<=records; i++){
         //da = Dearness allowances, hra = house rent allowance, city = city allowance, extra is your extra allowances
+        //professor chinmayee has already sent you all guys the formulas we are using to calculte the stuff like da, hra, taxes etc so please read that in whatsapp group
     int da = 0.58 * basp[i];
     int hra = 0.16 * basp[i];
     int city = cl[i];
@@ -123,3 +124,4 @@ int main() {
     }
     return 0;
 }
+
