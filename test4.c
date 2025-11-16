@@ -13,7 +13,7 @@ int main() {
     }
     
    //////////////////////
-    char name[records][50];//here 50 is the number of characters the variable can store
+    char name[records][50];
     for(i=1; i<=records; i++ ){
        printf("enter Name of Record %d : ", i);
         scanf("%s", &name[i]);
@@ -59,7 +59,7 @@ int main() {
         //da = Dearness allowances, hra = house rent allowance, city = city allowance, extra is your extra allowances
         //professor chinmayee has already sent you all guys the formulas we are using to calculte the stuff like da, hra, taxes etc so please read that in whatsapp group
 
-        float da = 0.58 * basp[i];
+    float da = 0.58 * basp[i];
     float hra = 0.16 * basp[i];
     float city = cl[i];
     float extra = alow[i];
@@ -77,11 +77,18 @@ int main() {
     //since the primary table is displayed now we start with secondary payslip table for single employees
     
     int n2;
+    
     //the payslip goto loop starts here
+    checker:
     payslip_menu:
     printf("Enter the EMP ID for which the Detailed Pay slip you want to check : ");
 
     scanf("%d", &n2 );
+    if (n2>records){
+            printf("invalid number, please input a valid response\n");
+            goto checker;
+
+        }
     printf("-------------------------------------------------------------------------------\n");
     float da = 0.58*basp[n2];
     float hra =  0.16*basp[n2];
@@ -126,4 +133,3 @@ int main() {
     }
     return 0;
 }
-
