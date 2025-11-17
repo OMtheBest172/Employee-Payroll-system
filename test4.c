@@ -50,11 +50,14 @@ int main() {
 
 
 //////////////////table outputs////////////
+     //net pay is the money we get in hand and total earnings is the basic pay +allowances before deductions
+    //
 
     printf("-------------------------------------------------------------------------------\n");
     printf("EMP ID\tName\t\tBasic Pay\tNet Pay\n");
     printf("-------------------------------------------------------------------------------\n");
-
+//da = Dearness allowances, hra = house rent allowance, city = city allowance, extra is your extra allowances
+        //chinmayee has already sent you all guys the formulas we are using to calculte the stuff like da, hra, taxes etc so please read that in whatsapp group
     for(i = 0; i < records; i++){
         float da = 0.58 * basp[i];
         float hra = 0.16 * basp[i];
@@ -150,3 +153,4 @@ payslip_menu:
 
     return 0;
 }
+
