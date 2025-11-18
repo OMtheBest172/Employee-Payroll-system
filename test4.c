@@ -23,7 +23,7 @@ int main() {
     /////////////////
     float basp[records];
     for(i = 0; i < records; i++ ){
-        printf("enter Baic Pay of Record %d : ", i+1);
+        printf("enter Basic Pay of Record %d : ", i+1);
         scanf("%f", &basp[i]);
     }
 
@@ -153,4 +153,5 @@ payslip_menu:
 
     return 0;
 }
+
 
