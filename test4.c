@@ -17,7 +17,7 @@ int main() {
     char name[records][50];//here 50 is the number of characters the variable can store
     for(i = 0; i < records; i++ ){
         printf("enter Name of Record %d : ", i+1);
-        scanf("%49s", name[i]);   // FIXED: removed &
+        scanf("%s", name[i]);   // FIXED: removed &
     }
 
     /////////////////
@@ -153,5 +153,6 @@ payslip_menu:
 
     return 0;
 }
+
 
 
