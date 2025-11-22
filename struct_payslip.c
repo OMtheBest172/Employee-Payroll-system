@@ -1,5 +1,6 @@
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 
 //so basically structures is way to define a composite data type(that is defined by us) that can have multiple of data types in a single name
 
@@ -15,31 +16,66 @@ struct Employee
 
     
 };
+#define DB_FILE "employees.dat"
+
+// Function to save record to database file
+void saveEmployee(struct Employee e) {
+    FILE *fp = fopen(DB_FILE, "ab");
+    if (!fp) {
+        printf("Error opening database file!\n");
+        return;
+    }
+    fwrite(&e, sizeof(e), 1, fp);
+    fclose(fp);
+}
+
+// Function to load all employees from file
+int loadEmployees(struct Employee E[]) {
+    FILE *fp = fopen(DB_FILE, "rb");
+    if (!fp) return 0;
+
+    int count = 0;
+    while (fread(&E[count], sizeof(struct Employee), 1, fp)) {
+        count++;
+    }
+    fclose(fp);
+    return count;
+}
+
 
 int main(){
 
-  int records,i;
-  printf("how many records you want to enter in the database table? : ");
-  scanf("%d",&records);
-  struct Employee E[records];
+  int i, n;
+  
+  
+  struct Employee E[100];
+  int records = loadEmployees(E);
+  printf("Database currently has %d stored records.\n", records);
+  printf("how many NEW records you want to enter in the database table? : ");
+  scanf("%d",&n);
     //you can see we are not using int float to define the array E, here we are usign our own made data type that was "employees"
     //basically its like we have defined a structure "Employees" that is our home and the variables(like basic pay, allowance, etc) we have declared is the 'room' in that "home" where we have made the array
   //////////Scan input///////////
-  for(i=0;i<records;i++)
+  for(i=0;i<n;i++)
   {
+
+    struct Employee temp;
      
     printf("Enter EMP ID of Record %d : ", i+1);
-    scanf("%d",&E[i].id); //when we mention E[i].id, then that means "hey computer whatever user has done input store it in the i index of array E then store it in the space of ID"
+    scanf("%d",&temp.id); //when we mention E[i].id, then that means "hey computer whatever user has done input store it in the i index of array E then store it in the space of ID"
     printf("Enter the name of Record %d:", i+1);
-    scanf("%s",&E[i].name);
+    scanf("%s",&temp.name);
     printf("Enter the Basic pay of Record %d:", i+1);
-    scanf("%f",&E[i].basic_pay);
+    scanf("%f",&temp.basic_pay);
     printf("Enter the extra allowance of Record %d:", i+1);
-    scanf("%f",&E[i].alow);
+    scanf("%f",&temp.alow);
     printf("Enter the extra deductions of Record %d:", i+1);
-    scanf("%f",&E[i].ded);
+    scanf("%f",&temp.ded);
     printf("Enter the city allowances of Record %d:", i+1);
-    scanf("%f",&E[i].cl);
+    scanf("%f",&temp.cl);
+
+    saveEmployee(temp);
+    E[records++] = temp;
   } //after this its literally the same code guys with a little bit of changes
 
   //////////////////table outputs////////////
