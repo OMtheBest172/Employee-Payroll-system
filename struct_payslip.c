@@ -62,7 +62,7 @@ int main(){
     struct Employee temp;
      
     printf("Enter EMP ID of Record %d : ", i+1);
-    scanf("%d",&temp.id); //when we mention E[i].id, then that means "hey computer whatever user has done input store it in the i index of array E then store it in the space of ID"
+    scanf("%d",&temp.id); 
     printf("Enter the name of Record %d:", i+1);
     scanf("%49s",&temp.name);
     printf("Enter the Basic pay of Record %d:", i+1);
@@ -172,4 +172,5 @@ payslip_menu:
     }
     return 0;
 }
+
 
